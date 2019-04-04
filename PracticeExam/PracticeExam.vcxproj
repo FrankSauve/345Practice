@@ -111,7 +111,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Question 1.cpp" />
+    <ClCompile Include="MyArray.cpp" />
+    <ClCompile Include="Question1.cpp" />
+    <ClCompile Include="Question2.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MyArray.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -152,7 +152,7 @@ List operator + (const List& list1, const List& list2) {
 	return output;
 }
 
-
+/*
 int main() {
 	List obj;
 	obj.createnode(25);
@@ -234,4 +234,4 @@ int main() {
 
 	int x; cin >> x;
 	return 0;
-}
+}*/
