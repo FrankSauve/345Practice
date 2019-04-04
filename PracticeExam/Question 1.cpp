@@ -88,11 +88,13 @@ public:
 		delete current; 
 	}
 	// Part 1
-	friend ostream& operator<<(ostream &output, const List& list);
+	friend ostream& operator << (ostream &output, const List& list);
+	// Part 2
+	friend istream& operator >> (istream& input, const List& list);
 };
 
 // Part 1
-ostream& operator<<(ostream &output, const List& list) {
+ostream& operator << (ostream &output, const List& list) {
 	Node *temp = new Node;
 	temp = list.head;
 	while (temp != NULL) {
@@ -100,6 +102,14 @@ ostream& operator<<(ostream &output, const List& list) {
 		temp = temp->next;
 	}
 	return output;
+}
+
+// Part 2
+istream& operator >> (istream& input, List& list) {
+	int value;
+	input >> value;
+	list.createnode(value);
+	return input;
 }
 
 int main(){
@@ -115,10 +125,16 @@ int main(){
 	
 	// Part 1
 	cout << "\n--------------------------------------------------\n";
-	cout << "----------Displaying with overloaded <<-----------";
+	cout << "----------Part 1-----------";
 	cout << "\n--------------------------------------------------\n";
 	cout << obj;
 
+	// Part 2
+	cout << "\n--------------------------------------------------\n";
+	cout << "----------Part 2-----------";
+	cout << "\n--------------------------------------------------\n";
+	cin >> obj;
+	cout << obj;
 
 	cout<<"\n--------------------------------------------------\n";
 	cout<<"-----------------Inserting At End-----------------";
