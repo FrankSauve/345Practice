@@ -17,6 +17,19 @@ public:
 		head=NULL;
 		tail=NULL;
 	}
+
+	// Part 5: Copy constructor
+	List(const List& list) {
+		head = NULL;
+		tail = NULL;
+		//copy list content
+		Node *temp = list.head;
+		while (temp != NULL) {
+			createnode(temp->data);
+			temp = temp->next;
+		}
+	}
+
 	void createnode(int value){
 		Node *temp=new Node;
 		temp->data=value;
@@ -91,6 +104,17 @@ public:
 	friend ostream& operator << (ostream &output, const List& list);
 	// Part 2
 	friend istream& operator >> (istream& input, const List& list);
+	// Part 3
+	friend List operator + (const List& list1, const List& list2);
+
+	// Part 4
+	List& operator = (const List& list) {
+		List* output = this;
+		Node* temp = output->head;
+		output->head = list.head;
+		output->tail = list.tail;
+		return *output;
+	}
 };
 
 // Part 1
@@ -112,60 +136,102 @@ istream& operator >> (istream& input, List& list) {
 	return input;
 }
 
-int main(){
+// Part 3
+List operator + (const List& list1, const List& list2) {
+	List output = List();
+	Node *temp1 = new Node;
+	Node *temp2 = new Node;
+	temp1 = list1.head;
+	temp2 = list2.head;
+	// Loop until the shortest list ends
+	while (temp1 != NULL && temp2 != NULL) {
+		output.createnode(temp1->data + temp2->data);
+		temp1 = temp1->next;
+		temp2 = temp2->next;
+	}
+	return output;
+}
+
+
+int main() {
 	List obj;
 	obj.createnode(25);
 	obj.createnode(50);
 	obj.createnode(90);
 	obj.createnode(40);
-	cout<<"\n--------------------------------------------------\n";
-	cout<<"---------------Displaying All nodes---------------";
-	cout<<"\n--------------------------------------------------\n";
+	cout << "\n--------------------------------------------------\n";
+	cout << "---------------Displaying All nodes---------------";
+	cout << "\n--------------------------------------------------\n";
 	obj.display();
-	
-	// Part 1
 	cout << "\n--------------------------------------------------\n";
-	cout << "----------Part 1-----------";
+	cout << "-----------------Inserting At End-----------------";
 	cout << "\n--------------------------------------------------\n";
-	cout << obj;
-
-	// Part 2
-	cout << "\n--------------------------------------------------\n";
-	cout << "----------Part 2-----------";
-	cout << "\n--------------------------------------------------\n";
-	cin >> obj;
-	cout << obj;
-
-	cout<<"\n--------------------------------------------------\n";
-	cout<<"-----------------Inserting At End-----------------";
-	cout<<"\n--------------------------------------------------\n";
 	obj.createnode(55);
 	obj.display();
-	cout<<"\n--------------------------------------------------\n";
-	cout<<"----------------Inserting At Start----------------";
-	cout<<"\n--------------------------------------------------\n";
+	cout << "\n--------------------------------------------------\n";
+	cout << "----------------Inserting At Start----------------";
+	cout << "\n--------------------------------------------------\n";
 	obj.insert_start(50);
 	obj.display();
-	cout<<"\n--------------------------------------------------\n";
-	cout<<"-------------Inserting At Particular--------------";
-	cout<<"\n--------------------------------------------------\n";
-	obj.insert_position(5,60);
+	cout << "\n--------------------------------------------------\n";
+	cout << "-------------Inserting At Particular--------------";
+	cout << "\n--------------------------------------------------\n";
+	obj.insert_position(5, 60);
 	obj.display();
-	cout<<"\n--------------------------------------------------\n";
-	cout<<"----------------Deleting At Start-----------------";
-	cout<<"\n--------------------------------------------------\n";
+	cout << "\n--------------------------------------------------\n";
+	cout << "----------------Deleting At Start-----------------";
+	cout << "\n--------------------------------------------------\n";
 	obj.delete_first();
 	obj.display();
-	cout<<"\n--------------------------------------------------\n";
-	cout<<"-----------------Deleting At End-------------------";
-	cout<<"\n--------------------------------------------------\n";
+	cout << "\n--------------------------------------------------\n";
+	cout << "-----------------Deleting At End-------------------";
+	cout << "\n--------------------------------------------------\n";
 	obj.delete_last();
 	obj.display();
-	cout<<"\n--------------------------------------------------\n";
-	cout<<"--------------Deleting At Particular--------------";
-	cout<<"\n--------------------------------------------------\n";
+	cout << "\n--------------------------------------------------\n";
+	cout << "--------------Deleting At Particular--------------";
+	cout << "\n--------------------------------------------------\n";
 	obj.delete_position(4);
 	obj.display();
+
+	cout << "\n--------------------------------------------------\n";
+	cout << "--------------Using answer code-----------------";
+	cout << "\n--------------------------------------------------\n";
+
+	cout << "\n--------------------------------------------------\n";
+	cout << "--------------Using copy constructor-----------------";
+	cout << "\n--------------------------------------------------\n";
+	List obj1(obj);
+	cout << obj1 << endl;
+
+	cout << "\n--------------------------------------------------\n";
+	cout << "--------------Using assignment operator-----------------";
+	cout << "\n--------------------------------------------------\n";
+	List obj2;
+	obj2 = obj1;
+	cout << obj1 << endl;
+
+	cout << "\n--------------------------------------------------\n";
+	cout << "--------------Using stream input------------------";
+	cout << "\n--------------------------------------------------\n";
+	cin >> obj1 >> obj1;
+	cout << obj1 << endl;
+
+	cout << "\n--------------------------------------------------\n";
+	cout << "--------------Using operator+------------------";
+	cout << "\n--------------------------------------------------\n";
+	List obj3, obj4;
+	obj3.createnode(1);
+	obj3.createnode(2);
+	obj3.createnode(3);
+	obj3.createnode(3);
+	obj4.createnode(4);
+	obj4.createnode(5);
+	obj4.createnode(6);
+	cout << "obj3 List: " << endl << obj3 << endl;
+	cout << "obj4 List: " << endl << obj4 << endl;
+	cout << "obj3 + obj4: " << endl << obj3 + obj4 << endl;
+
 	int x; cin >> x;
 	return 0;
 }
