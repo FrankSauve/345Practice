@@ -47,7 +47,7 @@ bool MyArray::isInArray(int value) {
 	}
 	return false;
 }
-
+/*
 int main() {
 	cout << "\n--------------------------------------------------\n";
 	cout << "---------------PART A---------------";
@@ -82,3 +82,4 @@ int main() {
 	int x; cin >> x;
 	return 0;
 }
+*/
