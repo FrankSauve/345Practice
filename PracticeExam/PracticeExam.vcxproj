@@ -114,18 +114,27 @@
     <ClCompile Include="Animal.cpp" />
     <ClCompile Include="Beaver.cpp" />
     <ClCompile Include="Cat.cpp" />
+    <ClCompile Include="ClockDriver.cpp" />
+    <ClCompile Include="ClockTimer.cpp" />
+    <ClCompile Include="DigitalClock.cpp" />
     <ClCompile Include="Duck.cpp" />
     <ClCompile Include="MyArray.cpp" />
+    <ClCompile Include="Observer.cpp" />
     <ClCompile Include="Platypus.cpp" />
     <ClCompile Include="Question1.cpp" />
+    <ClCompile Include="Subject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animal.h" />
     <ClInclude Include="Beaver.h" />
     <ClInclude Include="Cat.h" />
+    <ClInclude Include="ClockTimer.h" />
+    <ClInclude Include="DigitalClock.h" />
     <ClInclude Include="Duck.h" />
     <ClInclude Include="MyArray.h" />
+    <ClInclude Include="Observer.h" />
     <ClInclude Include="Platypus.h" />
+    <ClInclude Include="Subject.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

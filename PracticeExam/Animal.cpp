@@ -8,7 +8,7 @@
 
 using namespace std;
 
-
+/*
 int main() {
 	Animal** animals = new Animal*[4];
 	animals[0] = new Duck;
@@ -22,4 +22,4 @@ int main() {
 
 	cin.get();
 	return 0;
-}
+}*/
